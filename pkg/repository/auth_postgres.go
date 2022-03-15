@@ -2,6 +2,7 @@ package repository
 
 import (
 	"fmt"
+	"log"
 
 	"github.com/jmoiron/sqlx"
 	template "github.com/perfectogo/template_app"
@@ -24,4 +25,12 @@ func (r *AuthPostgres) CreateUser(user template.User) (int, error) {
 	}
 
 	return id, nil
+}
+func (r *AuthPostgres) GetUser(username, password string) (template.User, error) {
+	var user template.User
+	//var id int
+	query := fmt.Sprintf("SELECT user_id FROM %s WHERE username=$1 AND password_hash=$2", usersTable)
+	err := r.db.Get(&user.Id, query, username, password)
+	log.Println(user)
+	return user, err
 }

@@ -12,3 +12,8 @@ crud
 
 ## sql
     go get -u github.com/jmoiron/sqlx
+
+## jwt
+    go get -u github.com/dgrijalva/jwt-go
+
+* **audentifikatsiya** - biror narsaning haqiqiyligini tekshirish jarayoni
